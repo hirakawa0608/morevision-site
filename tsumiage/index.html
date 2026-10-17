@@ -14,7 +14,7 @@
 <meta property="og:image" content="https://morevision.co.jp/ogp-image.png">
 <meta property="og:locale" content="ja_JP">
 <meta property="article:published_time" content="2026-10-12">
-<meta property="article:modified_time" content="2026-10-12">
+<meta property="article:modified_time" content="2026-10-18">
 <meta name="twitter:card" content="summary_large_image">
 <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png">
 <link rel="icon" type="image/png" sizes="192x192" href="/favicon-192.png">
@@ -42,7 +42,7 @@
   "@type": "Article",
   "headline": "積み上げ型採用とは｜学生の声で、毎年よくなる採用",
   "datePublished": "2026-10-12",
-  "dateModified": "2026-10-12",
+  "dateModified": "2026-10-18",
   "url": "https://morevision.co.jp/tsumiage/",
   "author": {
    "@type": "Organization",
@@ -480,6 +480,48 @@
   .def-cta { display: inline-block; margin-top: 8px; background: var(--blue-mid); color: #fff !important; text-decoration: none !important; padding: 13px 32px; font-weight: 700; font-size: 14px; }
   .def-cta:hover { background: var(--blue-deep); }
 </style>
+
+<style>
+  .def-hero { padding: 120px 8vw 72px; }
+  .def-hero .hero-swirl { opacity: 0.55; }
+  .def-hero-grid { display: grid; grid-template-columns: minmax(0,1.15fr) minmax(0,1fr); gap: 48px; align-items: end; }
+  .def-stats { display: grid; grid-template-columns: repeat(3, 1fr); border-top: 1px solid rgba(255,255,255,0.3); }
+  .def-stats div { padding: 20px 0 0; }
+  .def-stats .bignum { font-family: "Outfit", sans-serif; font-size: clamp(30px, 3.6vw, 42px); font-weight: 800; line-height: 1; color: #fff; }
+  .def-stats .bignum .unit { font-size: 14px; color: var(--gold); margin-left: 3px; font-weight: 700; }
+  .def-stats .label { font-size: 12px; color: rgba(255,255,255,0.78); margin-top: 10px; line-height: 1.6; }
+  @media (max-width: 860px) { .def-hero-grid { grid-template-columns: 1fr; gap: 36px; } }
+  .loop-fig { margin: 8px 0 30px; background: #fff; border: 1px solid var(--line); padding: 18px 12px 8px; box-shadow: 0 10px 24px rgba(10,17,40,0.05); }
+  .loop-fig svg { display: block; width: 100%; height: auto; max-width: 620px; margin: 0 auto; }
+  .loop-fig figcaption { font-size: 12px; color: var(--ink-soft); text-align: center; margin: 6px 0 4px; }
+  .pillar-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin: 0 0 26px; }
+  @media (max-width: 760px) { .pillar-grid { grid-template-columns: 1fr; } }
+  .pillar { background: #fff; border: 1px solid var(--line); border-top: 3px solid var(--blue-mid); padding: 20px 20px 18px; }
+  .pillar .no { font-family: "Outfit", sans-serif; font-size: 13px; font-weight: 800; color: var(--blue-mid); letter-spacing: 0.1em; }
+  .pillar h3 { font-size: 16px; color: var(--ink); margin: 6px 0 2px; line-height: 1.5; }
+  .pillar .sub { font-size: 12.5px; font-weight: 700; color: var(--gold-deep); margin: 0 0 10px !important; }
+  .pillar p { font-size: 13.5px; line-height: 1.9; margin: 0 !important; }
+  .find-grid { display: grid; grid-template-columns: minmax(0,1.2fr) minmax(0,1fr); gap: 18px; margin: 6px 0 28px; }
+  @media (max-width: 760px) { .find-grid { grid-template-columns: 1fr; } }
+  .find-card { background: var(--paper); border: 1px solid var(--line); padding: 22px 22px 18px; }
+  .find-card .k { font-size: 13px; font-weight: 700; color: var(--ink); margin: 0 0 14px !important; line-height: 1.6; }
+  .bars { display: flex; align-items: flex-end; gap: 10px; height: 150px; border-bottom: 1px solid #b9c4d6; }
+  .bars .b { flex: 1; display: flex; flex-direction: column; justify-content: flex-end; align-items: center; height: 100%; }
+  .bars .b i { display: block; width: 100%; background: var(--blue-mid); border-radius: 3px 3px 0 0; }
+  .bars .b.lo i { background: #9fb4d6; }
+  .bars .b.hi i { background: var(--blue-deep); }
+  .bars .b span { font-family: "Outfit", sans-serif; font-size: 15px; font-weight: 800; color: var(--ink); margin-bottom: 4px; }
+  .bars .b.hi span { color: var(--blue-deep); font-size: 19px; }
+  .bar-labels { display: flex; gap: 10px; margin-top: 6px; }
+  .bar-labels div { flex: 1; text-align: center; font-size: 11px; line-height: 1.4; color: var(--ink-soft); }
+  .find-card .src { font-size: 11px; color: var(--ink-soft); margin: 12px 0 0 !important; line-height: 1.7; }
+  .big70 { font-family: "Outfit", sans-serif; font-size: 64px; font-weight: 800; color: var(--blue-deep); line-height: 1; }
+  .big70 .unit { font-size: 22px; margin-left: 2px; }
+  .stack { display: flex; height: 22px; border-radius: 3px; overflow: hidden; margin: 18px 0 8px; }
+  .stack i { display: block; height: 100%; }
+  .stack-legend { font-size: 11.5px; color: var(--ink-soft); line-height: 1.8; }
+  .stack-legend b { display: inline-block; width: 10px; height: 10px; border-radius: 2px; margin-right: 5px; vertical-align: -1px; }
+</style>
 </head>
 <body>
 
@@ -505,11 +547,21 @@
 
 <main>
 <section class="panel brand def-hero">
+  <div class="hero-swirl" aria-hidden="true"></div>
   <div class="inner">
-    <div class="eyebrow"><span></span>CONCEPT</div>
-    <h1>積み上げ型採用とは</h1>
-    <p class="catch">学生の声で、毎年よくなる採用</p>
-    <p class="dates">公開日：<time datetime="2026-10-12">2026年10月12日</time>　最終更新：<time datetime="2026-10-12">2026年10月12日</time>　提唱：FLAT-view（株式会社MoreVision／学生団体FLAT）</p>
+    <div class="def-hero-grid">
+      <div>
+        <div class="eyebrow"><span></span>CONCEPT</div>
+        <h1>積み上げ型採用とは</h1>
+        <p class="catch">学生の声で、毎年よくなる採用</p>
+        <p class="dates">公開日：<time datetime="2026-10-12">2026年10月12日</time>　最終更新：<time datetime="2026-10-18">2026年10月18日</time>　提唱：FLAT-view（株式会社MoreVision／学生団体FLAT）</p>
+      </div>
+      <div class="def-stats" aria-label="分析の規模">
+        <div><div class="bignum">2,640<span class="unit">人</span></div><div class="label">学生の<br>フィードバック</div></div>
+        <div><div class="bignum">176<span class="unit">回</span></div><div class="label">オンライン<br>企業説明会</div></div>
+        <div><div class="bignum">90<span class="unit">社</span></div><div class="label">参加企業</div></div>
+      </div>
+    </div>
   </div>
 </section>
 
@@ -534,11 +586,41 @@
   <div class="inner">
     <div class="def-body">
       <h2>積み上げ型採用の3つの柱</h2>
-      <ol class="def-list">
-        <li><strong>声を聴く｜説明会を直す</strong>：学生が何を重視し、どこに魅力を感じ、どこでがっかりしたのかを集め、次の説明会の話す順番や質疑応答を直します。</li>
-        <li><strong>声を届ける｜第三者として世の中に出す</strong>：学生が「よかった」と書いたことを、名前や大学名を伏せて学生の言葉のまま公開します。検索やAIが企業を紹介するときの材料にもなります。</li>
-        <li><strong>声でつくる｜自社の発信をつくる</strong>：たまった声から「学生が本当に知りたいこと」と「学生に響いた言葉」を拾い、採用サイトやSNSなど企業自身の発信をつくります。</li>
-      </ol>
+      <figure class="loop-fig">
+        <svg viewBox="0 0 560 470" role="img" aria-labelledby="loopTitle">
+          <title id="loopTitle">積み上げ型採用のループ：説明会で学生の声を聴き、説明会を直す。声を第三者として届け、自社の発信をつくる。検索やAIで見つかり、次の説明会に学生が集まる。</title>
+          <defs><marker id="ah" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#005fc0"/></marker></defs>
+          <circle cx="280" cy="250" r="150" fill="none" stroke="#dbe3f0" stroke-width="2" stroke-dasharray="4 6"/>
+          <path d="M 352 128 A 150 150 0 0 1 425 290" fill="none" stroke="#005fc0" stroke-width="3" marker-end="url(#ah)"/>
+          <path d="M 352 372 A 150 150 0 0 1 208 372" fill="none" stroke="#005fc0" stroke-width="3" marker-end="url(#ah)"/>
+          <path d="M 135 290 A 150 150 0 0 1 208 128" fill="none" stroke="#005fc0" stroke-width="3" marker-end="url(#ah)"/>
+          <circle cx="280" cy="250" r="78" fill="#000091"/>
+          <text x="280" y="242" text-anchor="middle" font-size="19" font-weight="700" fill="#fff">学生の声が</text>
+          <text x="280" y="270" text-anchor="middle" font-size="19" font-weight="700" fill="#f0a93a">たまる</text>
+          <g>
+            <rect x="190" y="52" width="180" height="76" rx="8" fill="#fff" stroke="#005fc0" stroke-width="2"/>
+            <text x="280" y="84" text-anchor="middle" font-size="19" font-weight="700" fill="#0a1128">① 声を聴く</text>
+            <text x="280" y="111" text-anchor="middle" font-size="15" fill="#565f7a">説明会を直す</text>
+          </g>
+          <g>
+            <rect x="370" y="300" width="180" height="76" rx="8" fill="#fff" stroke="#005fc0" stroke-width="2"/>
+            <text x="460" y="332" text-anchor="middle" font-size="19" font-weight="700" fill="#0a1128">② 声を届ける</text>
+            <text x="460" y="359" text-anchor="middle" font-size="15" fill="#565f7a">第三者として世に出す</text>
+          </g>
+          <g>
+            <rect x="10" y="300" width="180" height="76" rx="8" fill="#fff" stroke="#005fc0" stroke-width="2"/>
+            <text x="100" y="332" text-anchor="middle" font-size="19" font-weight="700" fill="#0a1128">③ 声でつくる</text>
+            <text x="100" y="359" text-anchor="middle" font-size="15" fill="#565f7a">自社の発信をつくる</text>
+          </g>
+          <text x="280" y="440" text-anchor="middle" font-size="15" font-weight="700" fill="#c97f1e">検索やAIで見つかり、次の説明会にまた学生が集まる</text>
+        </svg>
+        <figcaption>説明会のたびに、このループが一周します</figcaption>
+      </figure>
+      <div class="pillar-grid">
+        <div class="pillar"><div class="no">01</div><h3>声を聴く</h3><p class="sub">説明会を直す</p><p>学生が何を重視し、どこに魅力を感じ、どこでがっかりしたのかを集め、次の説明会の話す順番や質疑応答を直します。</p></div>
+        <div class="pillar"><div class="no">02</div><h3>声を届ける</h3><p class="sub">第三者として世の中に出す</p><p>学生が「よかった」と書いたことを、名前や大学名を伏せて学生の言葉のまま公開します。検索やAIが企業を紹介するときの材料にもなります。</p></div>
+        <div class="pillar"><div class="no">03</div><h3>声でつくる</h3><p class="sub">自社の発信をつくる</p><p>たまった声から「学生が本当に知りたいこと」と「学生に響いた言葉」を拾い、採用サイトやSNSなど企業自身の発信をつくります。</p></div>
+      </div>
       <p>この3つはループになります。説明会で声が集まり、その声で説明会と発信がよくなり、検索やAIで見つかって、次の説明会にまた学生が集まります。</p>
     </div>
   </div>
@@ -549,6 +631,21 @@
     <div class="def-body">
       <h2>学生の声から分かっていること</h2>
       <p>FLAT-viewのオンライン企業説明会で集めた、学生2,640人分のフィードバック（説明会176回、90社、2025年7月〜2026年9月）から、次のことが分かっています。</p>
+      <div class="find-grid">
+        <div class="find-card">
+          <p class="k">重視テーマに魅力を感じるほど、<br>選考に前向きな学生が増える</p>
+          <div class="bars" role="img" aria-label="魅力度2未満で15%、2から2.5で33%、2.5から3で50%、3から3.5で59%、3.5以上で70%"><div class="b lo"><span>15%</span><i style="height:18%"></i></div><div class="b"><span>33%</span><i style="height:39%"></i></div><div class="b"><span>50%</span><i style="height:59%"></i></div><div class="b"><span>59%</span><i style="height:69%"></i></div><div class="b hi"><span>70%</span><i style="height:82%"></i></div></div>
+          <div class="bar-labels"><div>2未満</div><div>2〜2.5</div><div>2.5〜3</div><div>3〜3.5</div><div>3.5以上</div></div>
+          <p class="src">横軸：重視テーマの、質疑応答後の魅力度（4段階・重視度で重みづけした平均）。縦軸：「興味あり」以上を選んだ割合。2,202人。</p>
+        </div>
+        <div class="find-card">
+          <p class="k">強く魅力を感じた学生でも、<br>多くは「HPを見て検討」で止まる</p>
+          <div class="big70">70<span class="unit">%</span></div>
+          <div class="stack" role="img" aria-label="検討70%、次に進む11%、見送る19%"><i style="width:70%;background:#005fc0"></i><i style="width:11%;background:#000091"></i><i style="width:19%;background:#c9d3e3"></i></div>
+          <div class="stack-legend"><b style="background:#005fc0"></b>HPや採用サイトを見て検討 70%<br><b style="background:#000091"></b>面談・選考・座談会・訪問へ進む 11%<br><b style="background:#c9d3e3"></b>見送る 19%</div>
+          <p class="src">重視テーマの魅力度3.5以上の学生146人。2026年5月末〜9月の説明会57回。</p>
+        </div>
+      </div>
       <ul class="def-list">
         <li>学生が重視するテーマが魅力的に伝わると、次の選考に前向きな学生は70%。伝わらないと、15%に下がります。</li>
         <li>学生が重視するテーマの上位は「待遇・福利厚生」「仕事内容」「社風・人間関係」。一方で、待遇と働き方は魅力的に伝わりにくいテーマです。</li>
