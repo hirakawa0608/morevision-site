@@ -1,0 +1,171 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-DVGCJWY5PP"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-DVGCJWY5PP');
+</script>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>AI概要セルフチェック｜株式会社MoreVision</title>
+<meta name="description" content="学生に、御社はAIでどう紹介されているか。Googleの「AIによる概要」を、採用担当者が10分で確認できるセルフチェックです。株式会社MoreVision作成。">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700&family=Zen+Kaku+Gothic+New:wght@700;900&display=swap">
+<style>
+/* Layout: a single-sheet worksheet: 3 numbered steps (a real sequence), a 5-row check table with ○△× choices that tallies itself, then what to do next */
+:root{
+  --bg:#f2f6fb; --paper:#ffffff; --fg:#0a1128; --muted:#565f7a; --line:#dbe3f0;
+  --accent:#005fc0; --accent-soft:#e4ecf6;
+  --good:#2b6b3f; --good-bg:#e2f1e6; --mid:#8a5300; --mid-bg:#fbefd9; --bad:#a1332b; --bad-bg:#fbe4e1;
+  --display:"Zen Kaku Gothic New","Hiragino Kaku Gothic ProN","Yu Gothic",sans-serif;
+  --body:"Noto Sans JP","Hiragino Kaku Gothic ProN","Yu Gothic",system-ui,sans-serif;
+}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
+  --bg:#11181b; --paper:#172126; --fg:#e2e9ec; --muted:#9aa9af; --line:#2a383e;
+  --accent:#7cc3d6; --accent-soft:#1c2d33;
+  --good:#86d29d; --good-bg:#183022; --mid:#f0bf6e; --mid-bg:#33270f; --bad:#f2948a; --bad-bg:#3a1c19; color-scheme:dark}}
+:root[data-theme="dark"]{
+  --bg:#11181b; --paper:#172126; --fg:#e2e9ec; --muted:#9aa9af; --line:#2a383e;
+  --accent:#7cc3d6; --accent-soft:#1c2d33;
+  --good:#86d29d; --good-bg:#183022; --mid:#f0bf6e; --mid-bg:#33270f; --bad:#f2948a; --bad-bg:#3a1c19; color-scheme:dark}
+*{box-sizing:border-box}
+body{background:var(--bg);color:var(--fg);font-family:var(--body);font-size:16px;line-height:1.8;
+  padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));padding-block:24px 56px}
+.sheet{max-width:46em;margin:0 auto;background:var(--paper);border:1px solid var(--line);border-radius:12px;padding:28px clamp(18px,4vw,40px) 32px}
+.pr{display:inline-block;font-size:12px;font-weight:700;border:1px solid var(--muted);color:var(--muted);border-radius:3px;padding:0 6px;letter-spacing:.08em}
+.eyebrow{font-size:13px;color:var(--muted);letter-spacing:.1em;margin:0 0 6px;display:flex;gap:10px;flex-wrap:wrap;align-items:center}
+h1{font-family:var(--display);font-weight:900;font-size:clamp(25px,5vw,34px);line-height:1.35;margin:0 0 10px;color:var(--accent);text-wrap:balance}
+h1 .nb{display:inline-block}
+.lead{margin:0 0 6px}
+.fact{font-size:14px;color:var(--muted);margin:0}
+h2{font-family:var(--display);font-size:20px;margin:30px 0 10px;display:flex;gap:10px;align-items:baseline;text-wrap:balance}
+h2 .no{font-family:var(--display);font-size:14px;font-weight:900;color:var(--paper);background:var(--accent);border-radius:999px;min-width:1.9em;height:1.9em;display:inline-grid;place-items:center;flex:none}
+.queries{display:grid;gap:8px;margin:8px 0 6px;padding:0;list-style:none}
+.queries li{background:var(--accent-soft);border-radius:6px;padding:8px 12px;font-weight:500;font-variant-numeric:tabular-nums}
+.queries li span{color:var(--muted);font-weight:400;font-size:13.5px;margin-left:8px}
+.small{font-size:13.5px;color:var(--muted)}
+.tw{overflow-x:auto;border:1px solid var(--line);border-radius:8px;margin:10px 0}
+table{border-collapse:collapse;width:100%;min-width:540px;font-size:14.5px;line-height:1.7}
+th,td{padding:10px 12px;border-bottom:1px solid var(--line);text-align:left;vertical-align:top}
+th{background:var(--accent-soft);white-space:nowrap}
+tr:last-child td{border-bottom:0}
+td.q strong{display:block}
+td.q span{font-size:13px;color:var(--muted)}
+.opts{display:flex;gap:6px;flex-wrap:nowrap}
+.opts label{cursor:pointer}
+.opts input{position:absolute;opacity:0;pointer-events:none}
+.opts span{display:inline-grid;place-items:center;width:2.3em;height:2.3em;border:1px solid var(--line);border-radius:6px;font-weight:700;color:var(--muted)}
+.opts input:focus-visible + span{outline:2px solid var(--accent);outline-offset:2px}
+.opts input[value="good"]:checked + span{background:var(--good-bg);color:var(--good);border-color:var(--good)}
+.opts input[value="mid"]:checked + span{background:var(--mid-bg);color:var(--mid);border-color:var(--mid)}
+.opts input[value="bad"]:checked + span{background:var(--bad-bg);color:var(--bad);border-color:var(--bad)}
+.crit{display:block;font-size:12.5px;color:var(--muted);margin-top:4px}
+.crit em{font-style:normal;font-weight:700;margin-right:3px}
+.crit em.ok{color:var(--good)}
+.crit em.ng{color:var(--bad);margin-left:6px}
+.result{margin:12px 0 0;padding:14px 16px;border-radius:8px;background:var(--accent-soft)}
+.result p{margin:0}
+.result strong{color:var(--accent)}
+.next{display:grid;gap:10px;margin:10px 0 0;padding:0;list-style:none}
+.next li{border:1px solid var(--line);border-radius:8px;padding:12px 14px}
+.next li b{display:block;margin-bottom:2px}
+.notes{margin-top:26px;padding-top:14px;border-top:1px solid var(--line);font-size:13px;color:var(--muted)}
+.notes ul{margin:4px 0 0;padding-left:1.2em}
+.cta{margin-top:22px;padding:16px 18px;border:2px solid var(--accent);border-radius:10px}
+.cta p{margin:0}
+.cta strong{display:block;margin-bottom:4px}
+.ph{color:var(--bad);background:var(--bad-bg);border-radius:3px;padding:0 3px}
+.more{margin-top:26px}
+.more-h{font-family:var(--display);font-weight:700;font-size:17px;margin:0 0 4px}
+.more .pr{margin-left:6px;vertical-align:2px}
+footer{font-size:12.5px;color:var(--muted);margin-top:18px;line-height:1.7}
+a{color:var(--accent)}
+</style>
+</head>
+<body>
+
+<div class="sheet">
+<p class="eyebrow"><span>株式会社MoreVision · 採用担当者向け · 所要時間10分</span></p>
+<h1><span class="nb">学生に、</span><span class="nb">御社はAIで</span><span class="nb">どう紹介されていますか</span></h1>
+<p class="lead">「AIによる概要」セルフチェック</p>
+<p class="fact">就活で生成AIを使う27卒は9割を超え、業界・企業研究に使う学生も約4割います（学情、2026年9月）。Googleで社名を検索すると、一番上に「AIによる概要」が出ます。学生と同じ画面を、一度見てみてください。</p>
+
+<h2><span class="no">1</span>学生と同じ言葉で検索する</h2>
+<p style="margin:0">Googleで、次の3つを検索してください。会社のアカウントからログアウトするか、シークレットウィンドウを使うと、学生に近い画面になります。</p>
+<ol class="queries">
+<li>御社名　新卒　口コミ <span>就活中の学生が調べやすい言葉</span></li>
+<li>御社名　評判 <span>口コミと並んでよく使われる言葉</span></li>
+<li>御社名　新卒 <span>会社そのものを調べるときの言葉</span></li>
+</ol>
+<p class="small">余裕があれば、ChatGPTなどの対話型AIにも「御社名の新卒採用について教えて」と聞いてみてください。</p>
+
+<h2><span class="no">2</span>5つの点をチェックする</h2>
+<p style="margin:0">「AIによる概要」がいちばん長く出た検索結果で、5つの点に ○、△、× をつけてください。それぞれの○と×の目安は、項目の下に書いてあります。どちらとも言えなければ△です。</p>
+<div class="tw"><table>
+<thead><tr><th>確認すること</th><th>結果</th></tr></thead>
+<tbody>
+<tr><td class="q"><strong>① 書かれている内容が、今の会社の姿と合っているか</strong><span>もう変わった制度や、数年前の出来事が書かれていないか</span><span class="crit"><em class="ok">○</em>今の姿と合っている　<em class="ng">×</em>古い情報や、事実と違う情報がある</span></td><td><div class="opts" role="radiogroup" aria-label="①の結果"><label><input type="radio" name="q1" value="good"><span>○</span></label><label><input type="radio" name="q1" value="mid"><span>△</span></label><label><input type="radio" name="q1" value="bad"><span>×</span></label></div></td></tr>
+<tr><td class="q"><strong>② 出典の日付は新しいか</strong><span>要約の下に出る参照元の記事や口コミが、いつのものか</span><span class="crit"><em class="ok">○</em>ここ1〜2年のものが中心　<em class="ng">×</em>数年前のものが中心</span></td><td><div class="opts" role="radiogroup" aria-label="②の結果"><label><input type="radio" name="q2" value="good"><span>○</span></label><label><input type="radio" name="q2" value="mid"><span>△</span></label><label><input type="radio" name="q2" value="bad"><span>×</span></label></div></td></tr>
+<tr><td class="q"><strong>③ 悪い口コミや評判が、要約で取り上げられていないか</strong><span>一部でも、否定的な声が要約に入っていないか</span><span class="crit"><em class="ok">○</em>取り上げられていない　<em class="ng">×</em>取り上げられている</span></td><td><div class="opts" role="radiogroup" aria-label="③の結果"><label><input type="radio" name="q3" value="good"><span>○</span></label><label><input type="radio" name="q3" value="mid"><span>△</span></label><label><input type="radio" name="q3" value="bad"><span>×</span></label></div></td></tr>
+<tr><td class="q"><strong>④ 会社の今の魅力が、要約から伝わるか</strong><span>事業、社風、成長できる環境など、学生に知ってほしい良さが書かれているか</span><span class="crit"><em class="ok">○</em>伝わる　<em class="ng">×</em>書かれていない、または薄い</span></td><td><div class="opts" role="radiogroup" aria-label="④の結果"><label><input type="radio" name="q4" value="good"><span>○</span></label><label><input type="radio" name="q4" value="mid"><span>△</span></label><label><input type="radio" name="q4" value="bad"><span>×</span></label></div></td></tr>
+<tr><td class="q"><strong>⑤ 出典に、自社のページや第三者の新しい声が入っているか</strong><span>採用ページ、社員や学生の最近の声などが参照されているか</span><span class="crit"><em class="ok">○</em>入っている　<em class="ng">×</em>口コミサイトや古い記事だけ</span></td><td><div class="opts" role="radiogroup" aria-label="⑤の結果"><label><input type="radio" name="q5" value="good"><span>○</span></label><label><input type="radio" name="q5" value="mid"><span>△</span></label><label><input type="radio" name="q5" value="bad"><span>×</span></label></div></td></tr>
+</tbody></table></div>
+<div class="result" id="result" aria-live="polite"><p>○△×をつけると、ここに結果の見方が出ます。</p></div>
+
+<h2><span class="no">3</span>×や△があったら</h2>
+<p style="margin:0">AIによる概要は、ネット上の情報をもとにGoogleがつくるもので、企業が直接書き換えることはできません。できるのは、AIが読む材料を、新しく正確なものに増やしていくことです。</p>
+<ul class="next">
+<li><b>自社でできること：採用ページに「今」を書く</b>今の制度や働き方、会社の魅力を具体的に書き、更新日を入れます。</li>
+<li><b>第三者の新しい声を増やす</b>第三者の声は、会社自身の発信とは別の材料になります。説明会に参加した学生の声を、日付を入れて公開していくことが材料になります。</li>
+</ul>
+
+<div class="cta"><p><strong>対策について知りたい方へ</strong>AIに御社の今の姿を読み取ってもらうための具体的な方法を、30分ほどのオンラインでご説明します。ご希望の方は、<a href="https://morevision.co.jp/#contact">お問い合わせフォーム</a>から「セルフチェックの件」とご連絡ください。メールでご案内を受け取った方は、そのメールへのご返信でも大丈夫です。</p></div>
+
+<div class="notes">
+<p style="margin:0"><b>ご注意</b></p>
+<ul>
+<li>AIによる概要は、検索のたびや時期によって内容が変わります。検索の言葉によっては表示されないこともあります。</li>
+<li>このチェックは、学生から見た見え方をつかむための目安です。検索結果の内容を保証するものではありません。</li>
+</ul>
+</div>
+
+<div class="more">
+<p class="more-h">学生の声を、もっと知りたい方へ</p>
+<ul class="next">
+<li><b><a href="https://voice.shukatsuflat.com/?utm_source=morevision&amp;utm_medium=referral&amp;utm_campaign=aio-check" target="_blank" rel="noopener">FLAT Voice</a></b>説明会に参加した学生の声を、学生の言葉のまま、日付つきで公開しているサイトです。株式会社MoreVisionが学生団体FLATと運営しています。</li>
+<li><b><a href="https://note.com/flat_official?utm_source=morevision&amp;utm_medium=referral&amp;utm_campaign=aio-check" target="_blank" rel="noopener">FLAT-viewのnote</a></b>説明会のレポートと、学生の声を紹介しています。</li>
+<li><b><a href="https://note.com/morevision?utm_source=morevision&amp;utm_medium=referral&amp;utm_campaign=aio-check" target="_blank" rel="noopener">MoreVisionのnote</a></b>2,645人の学生の声から分かったことを、「積み上げ型採用」のデータ記事としてまとめています。</li>
+</ul>
+</div>
+
+<footer>
+<p style="margin:0">この資料は株式会社MoreVisionが作成しています。MoreVisionは、学生団体FLATと運営する「FLAT-view」で集めた学生の声をもとに、説明会や採用の発信を毎年よくしていく「積み上げ型採用」を支援しています。</p>
+<p style="margin:4px 0 0">出典：学情「就活・採用における生成AI利用に関する調査」（2026年9月）、FLAT-view 説明会フィードバック（2025年7月〜2026年9月、179回・2,645人）</p>
+</footer>
+</div>
+
+<script>
+(function(){
+  var box=document.getElementById('result');
+  function update(){
+    var n={good:0,mid:0,bad:0},done=0;
+    for(var i=1;i<=5;i++){var c=document.querySelector('input[name="q'+i+'"]:checked');if(c){n[c.value]++;done++;}}
+    if(!done){box.innerHTML='<p>○△×をつけると、ここに結果の見方が出ます。</p>';return;}
+    var head='<strong>○ '+n.good+'　△ '+n.mid+'　× '+n.bad+'</strong>（'+done+'/5項目）<br>';
+    var msg;
+    if(n.bad>=2) msg='AIが読んでいる情報が、今の御社の姿に追いついていない可能性が高い状態です。下の「×や△があったら」から、早めに手を打つことをおすすめします。';
+    else if(n.bad===1||n.mid>=2) msg='大きな問題はないものの、気になる点があります。×や△の項目について、新しい情報を増やしていきましょう。';
+    else msg='今のところ、学生には今の御社の姿が伝わりやすい状態です。ときどき同じ検索で見直してください。';
+    box.innerHTML='<p>'+head+msg+'</p>';
+  }
+  [].slice.call(document.querySelectorAll('.opts input')).forEach(function(r){r.addEventListener('change',update);});
+})();
+</script>
+
+</body>
+</html>
